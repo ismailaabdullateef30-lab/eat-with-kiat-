@@ -1060,7 +1060,7 @@
             <div class="order-form">
                 <h3>📋 Order Form</h3>
                 <div class="form-notice">⚠️ Delivery Only – No Dine-In Service</div>
-                <form id="orderForm">
+                <form id="orderForm" action="https://formspree.io/f/xykndyne" method="POST">
                     <div class="form-grid">
                         <div class="form-group">
                             <label for="name">Full Name *</label>
@@ -1193,10 +1193,8 @@
         });
 
         // ── FORM SUBMIT ──
-        document.getElementById('orderForm').addEventListener('submit', function (e) {
-            e.preventDefault();
-            alert('Thank you for your order! We will contact you shortly via WhatsApp or Call.');
-            this.reset();
+        document.getElementById('orderForm').addEventListener('submit', function () {
+            // Formspree handles submission — no preventDefault
         });
 
         // ── FULL PAGE FIREWORKS BACKGROUND ──
