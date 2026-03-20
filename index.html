@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eat With Kiat - Premium Food Delivery & Catering</title>
-    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@700&family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -14,18 +14,24 @@
         }
 
         :root {
-            --primary-orange: #E8764D;
-            --deep-green: #1B5E3F;
-            --golden-yellow: #D4A574;
-            --soft-cream: #F5F1E8;
-            --dark-text: #2C2C2C;
-            --light-text: #FFFFFF;
+            --gold: #C9A84C;
+            --gold-light: #E8C97A;
+            --gold-dark: #9A7A2E;
+            --black: #0A0A0A;
+            --black-rich: #111111;
+            --black-card: #1A1A1A;
+            --black-surface: #222222;
+            --black-border: #2A2A2A;
+            --white: #FFFFFF;
+            --white-soft: #F5F0E8;
+            --text-muted: #999999;
+            --gold-glow: rgba(201, 168, 76, 0.3);
         }
 
         body {
             font-family: 'Poppins', sans-serif;
-            background-color: var(--soft-cream);
-            color: var(--dark-text);
+            background-color: var(--black);
+            color: var(--white);
             line-height: 1.6;
         }
 
@@ -33,118 +39,218 @@
             scroll-behavior: smooth;
         }
 
-        /* Typography */
         h1, h2, h3 {
             font-weight: 700;
         }
 
-        .cursive-title {
+        /* ── NAVBAR ── */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--black-border);
+            padding: 0 2rem;
+            height: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .nav-logo {
             font-family: 'Great Vibes', cursive;
-            font-size: 3.5rem;
-            color: var(--primary-orange);
-            font-weight: 400;
-            letter-spacing: 2px;
+            font-size: 2rem;
+            color: var(--gold);
+            text-decoration: none;
+            letter-spacing: 1px;
         }
 
-        .section-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 2.8rem;
-            color: var(--deep-green);
-            margin-bottom: 1rem;
-            text-align: center;
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
         }
 
-        /* Hero Section */
+        .nav-links a {
+            color: var(--white-soft);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            transition: color 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        .nav-links a:hover {
+            color: var(--gold);
+        }
+
+        .nav-cta {
+            background: var(--gold);
+            color: var(--black) !important;
+            padding: 0.5rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600 !important;
+        }
+
+        .nav-cta:hover {
+            background: var(--gold-light) !important;
+            color: var(--black) !important;
+        }
+
+        /* Hamburger */
+        .nav-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+            background: none;
+            border: none;
+            padding: 5px;
+        }
+
+        .nav-toggle span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--gold);
+            transition: all 0.3s ease;
+        }
+
+        @media (max-width: 768px) {
+            .nav-toggle {
+                display: flex;
+            }
+
+            .nav-links {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                background: var(--black-rich);
+                flex-direction: column;
+                padding: 1.5rem 2rem;
+                gap: 1.2rem;
+                border-bottom: 1px solid var(--black-border);
+            }
+
+            .nav-links.open {
+                display: flex;
+            }
+
+            .nav-links a {
+                font-size: 1rem;
+            }
+        }
+
+        /* ── GOLD DIVIDER ── */
+        .gold-divider {
+            width: 80px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            margin: 1rem auto 2rem;
+        }
+
+        /* ── HERO ── */
         .hero {
-            height: 100vh;
-            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--deep-green) 100%);
+            min-height: 100vh;
+            background:
+                linear-gradient(to bottom, rgba(0,0,0,0.65) 0%, rgba(0,0,0,0.5) 60%, rgba(0,0,0,0.85) 100%),
+                radial-gradient(ellipse at 20% 50%, rgba(201,168,76,0.15) 0%, transparent 60%),
+                radial-gradient(ellipse at 80% 50%, rgba(201,168,76,0.08) 0%, transparent 60%),
+                var(--black-rich);
             display: flex;
             align-items: center;
             justify-content: center;
             position: relative;
             overflow: hidden;
-            animation: fadeIn 1s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
+            padding-top: 70px;
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            width: 400px;
-            height: 400px;
-            background: rgba(255, 255, 255, 0.05);
+            width: 500px;
+            height: 500px;
             border-radius: 50%;
-            top: -100px;
-            right: -100px;
-            animation: float 6s ease-in-out infinite;
+            background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+            top: -150px;
+            right: -150px;
+            animation: pulse 8s ease-in-out infinite;
         }
 
         .hero::after {
             content: '';
             position: absolute;
-            width: 300px;
-            height: 300px;
-            background: rgba(255, 255, 255, 0.05);
+            width: 400px;
+            height: 400px;
             border-radius: 50%;
-            bottom: -50px;
-            left: -50px;
-            animation: float 8s ease-in-out infinite reverse;
+            background: radial-gradient(circle, rgba(201,168,76,0.06) 0%, transparent 70%);
+            bottom: -100px;
+            left: -100px;
+            animation: pulse 10s ease-in-out infinite reverse;
         }
 
-        @keyframes float {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(30px);
-            }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.6; }
+            50% { transform: scale(1.15); opacity: 1; }
         }
 
         .hero-content {
             text-align: center;
             z-index: 1;
-            animation: slideUp 1s ease-out 0.3s both;
+            padding: 2rem;
+            animation: fadeUp 1s ease-out 0.2s both;
         }
 
-        @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(40px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(201, 168, 76, 0.15);
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-size: 0.8rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            padding: 0.4rem 1.5rem;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
         }
 
         .hero-content h1 {
             font-family: 'Great Vibes', cursive;
-            font-size: 5.5rem;
-            color: var(--light-text);
+            font-size: 9rem;
+            color: var(--white);
+            font-weight: 700;
+            text-shadow: 0 0 40px rgba(201,168,76,0.9), 0 0 80px rgba(201,168,76,0.5), 2px 2px 0px rgba(0,0,0,0.8);
+            line-height: 1.1;
             margin-bottom: 0.5rem;
-            text-shadow: 3px 3px 10px rgba(0, 0, 0, 0.3);
+            -webkit-text-stroke: 1px rgba(201,168,76,0.4);
         }
 
         .hero-content .tagline {
-            font-size: 2rem;
-            color: var(--golden-yellow);
-            margin-bottom: 1rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.6rem;
+            color: var(--gold);
             font-style: italic;
+            margin-bottom: 0.8rem;
+            letter-spacing: 1px;
         }
 
         .hero-content .subtitle {
-            font-size: 1.2rem;
-            color: var(--light-text);
-            margin-bottom: 2.5rem;
-            opacity: 0.95;
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 3rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .hero-buttons {
@@ -154,46 +260,69 @@
             flex-wrap: wrap;
         }
 
+        /* ── BUTTONS ── */
         .btn {
-            padding: 1rem 2.5rem;
-            font-size: 1.1rem;
+            padding: 0.85rem 2.5rem;
+            font-size: 0.95rem;
             border: none;
             border-radius: 50px;
             cursor: pointer;
             font-weight: 600;
             transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             text-decoration: none;
             display: inline-block;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
         .btn-primary {
-            background: var(--golden-yellow);
-            color: var(--dark-text);
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+            box-shadow: 0 4px 20px var(--gold-glow);
         }
 
         .btn-primary:hover {
             transform: translateY(-3px);
-            box-shadow: 0 6px 25px rgba(212, 165, 116, 0.4);
-            background: #E6B887;
+            box-shadow: 0 8px 30px rgba(201,168,76,0.5);
+            background: linear-gradient(135deg, var(--gold-light), var(--gold));
         }
 
         .btn-secondary {
-            background: var(--light-text);
-            color: var(--primary-orange);
-            border: 2px solid var(--light-text);
+            background: transparent;
+            color: var(--white);
+            border: 1px solid rgba(255,255,255,0.3);
         }
 
         .btn-secondary:hover {
             transform: translateY(-3px);
-            background: transparent;
-            box-shadow: 0 6px 25px rgba(255, 255, 255, 0.3);
+            border-color: var(--gold);
+            color: var(--gold);
+            box-shadow: 0 6px 20px rgba(201,168,76,0.2);
         }
 
-        /* Features Section */
+        /* ── SECTION COMMON ── */
+        .section-label {
+            text-align: center;
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            color: var(--gold);
+            text-transform: uppercase;
+            margin-bottom: 0.8rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.6rem;
+            color: var(--white);
+            text-align: center;
+            margin-bottom: 0.5rem;
+        }
+
+        /* ── FEATURES ── */
         .features {
-            padding: 6rem 2rem;
-            background: var(--soft-cream);
+            padding: 7rem 2rem;
+            background: var(--black-rich);
+            position: relative;
         }
 
         .features-container {
@@ -201,65 +330,67 @@
             margin: 0 auto;
         }
 
-        .features h2 {
-            text-align: center;
-            margin-bottom: 3rem;
-            font-size: 2.5rem;
-            color: var(--deep-green);
-        }
-
         .features-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
+            margin-top: 3rem;
         }
 
         .feature-card {
-            background: var(--light-text);
-            padding: 2rem;
-            border-radius: 15px;
+            background: var(--black-card);
+            padding: 2.5rem 2rem;
+            border-radius: 12px;
             text-align: center;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            border-top: 4px solid var(--primary-orange);
-            animation: slideUp 0.6s ease-out backwards;
+            transition: all 0.4s ease;
+            border: 1px solid var(--black-border);
+            position: relative;
+            overflow: hidden;
         }
 
-        .feature-card:nth-child(2) {
-            animation-delay: 0.1s;
-        }
-
-        .feature-card:nth-child(3) {
-            animation-delay: 0.2s;
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 12px 35px rgba(232, 118, 77, 0.2);
-            border-top-color: var(--golden-yellow);
+            border-color: var(--gold-dark);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5), 0 0 30px var(--gold-glow);
+        }
+
+        .feature-card:hover::before {
+            opacity: 1;
         }
 
         .feature-icon {
             font-size: 3rem;
-            color: var(--primary-orange);
-            margin-bottom: 1rem;
+            margin-bottom: 1.2rem;
         }
 
         .feature-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--deep-green);
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--gold);
         }
 
         .feature-card p {
-            color: #666;
+            color: var(--text-muted);
             line-height: 1.8;
+            font-size: 0.95rem;
         }
 
-        /* Menu Section */
+        /* ── MENU ── */
         .menu {
-            padding: 6rem 2rem;
-            background: linear-gradient(135deg, rgba(232, 118, 77, 0.05) 0%, rgba(27, 94, 63, 0.05) 100%);
+            padding: 7rem 2rem;
+            background: var(--black);
         }
 
         .menu-container {
@@ -267,111 +398,109 @@
             margin: 0 auto;
         }
 
-        .menu-title {
-            text-align: center;
-            margin-bottom: 1rem;
-        }
-
-        .menu-title h2 {
-            font-family: 'Great Vibes', cursive;
-            font-size: 3.2rem;
-            color: var(--primary-orange);
-            margin-bottom: 2rem;
-        }
-
         .menu-categories {
             display: flex;
             justify-content: center;
-            gap: 1rem;
+            gap: 0.8rem;
             flex-wrap: wrap;
-            margin-bottom: 3rem;
+            margin: 2.5rem 0 3rem;
         }
 
         .category-btn {
-            padding: 0.7rem 1.5rem;
-            border: 2px solid var(--primary-orange);
-            background: transparent;
-            color: var(--primary-orange);
+            padding: 0.6rem 1.4rem;
+            border: 1px solid var(--black-border);
+            background: var(--black-card);
+            color: var(--text-muted);
             border-radius: 25px;
             cursor: pointer;
-            font-weight: 600;
+            font-weight: 500;
             transition: all 0.3s ease;
-            font-size: 1rem;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
         }
 
-        .category-btn:hover,
+        .category-btn:hover {
+            border-color: var(--gold-dark);
+            color: var(--gold);
+        }
+
         .category-btn.active {
-            background: var(--primary-orange);
-            color: var(--light-text);
+            background: linear-gradient(135deg, var(--gold), var(--gold-dark));
+            color: var(--black);
+            border-color: var(--gold);
+            font-weight: 700;
         }
 
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1.5rem;
         }
 
         .menu-card {
-            background: var(--light-text);
+            background: var(--black-card);
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-            animation: slideUp 0.6s ease-out backwards;
+            border: 1px solid var(--black-border);
+            transition: all 0.35s ease;
         }
 
         .menu-card:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 10px 30px rgba(232, 118, 77, 0.25);
+            transform: translateY(-8px);
+            border-color: var(--gold-dark);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6), 0 0 20px var(--gold-glow);
         }
 
         .menu-card-image {
             width: 100%;
-            height: 200px;
-            background: linear-gradient(135deg, var(--primary-orange), var(--golden-yellow));
+            height: 180px;
+            background: linear-gradient(135deg, var(--black-surface), var(--black-border));
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 3rem;
-            color: var(--light-text);
+            font-size: 3.5rem;
+            border-bottom: 1px solid var(--black-border);
+            position: relative;
             overflow: hidden;
         }
 
         .menu-card-image::after {
             content: '';
             position: absolute;
-            width: 100%;
-            height: 100%;
-            background: rgba(27, 94, 63, 0.1);
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
         }
 
         .menu-card-content {
-            padding: 1.5rem;
+            padding: 1.2rem 1.5rem 1.5rem;
         }
 
         .menu-card h3 {
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-            color: var(--deep-green);
+            font-size: 1.1rem;
+            margin-bottom: 0.4rem;
+            color: var(--white);
         }
 
         .menu-card p {
-            color: #666;
-            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-size: 0.85rem;
             margin-bottom: 1rem;
+            line-height: 1.5;
         }
 
         .menu-price {
-            color: var(--primary-orange);
+            color: var(--gold);
             font-weight: 700;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
         }
 
-        /* Guidelines Section */
+        /* ── GUIDELINES ── */
         .guidelines {
-            padding: 6rem 2rem;
-            background: var(--deep-green);
-            color: var(--light-text);
+            padding: 7rem 2rem;
+            background: var(--black-rich);
         }
 
         .guidelines-container {
@@ -379,123 +508,135 @@
             margin: 0 auto;
         }
 
-        .guidelines h2 {
-            font-size: 2.8rem;
-            text-align: center;
-            margin-bottom: 1rem;
-            color: var(--golden-yellow);
-        }
-
         .guidelines-subtitle {
             text-align: center;
-            font-size: 1.3rem;
-            margin-bottom: 3rem;
-            opacity: 0.9;
+            font-size: 1rem;
+            color: var(--text-muted);
+            margin-bottom: 3.5rem;
         }
 
         .guidelines-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.2rem;
         }
 
         .guideline-item {
             display: flex;
             gap: 1rem;
-            background: rgba(255, 255, 255, 0.05);
+            background: var(--black-card);
             padding: 1.5rem;
             border-radius: 10px;
-            border-left: 4px solid var(--golden-yellow);
+            border: 1px solid var(--black-border);
+            border-left: 3px solid var(--gold-dark);
             transition: all 0.3s ease;
-            animation: slideUp 0.6s ease-out backwards;
         }
 
         .guideline-item:hover {
-            background: rgba(255, 255, 255, 0.1);
-            transform: translateX(10px);
+            border-left-color: var(--gold);
+            background: var(--black-surface);
+            transform: translateX(6px);
         }
 
         .guideline-icon {
-            font-size: 1.5rem;
-            color: var(--golden-yellow);
+            font-size: 1.2rem;
+            color: var(--gold);
             flex-shrink: 0;
+            margin-top: 2px;
         }
 
         .guideline-text h3 {
-            margin-bottom: 0.5rem;
-            font-size: 1.1rem;
+            margin-bottom: 0.3rem;
+            font-size: 1rem;
+            color: var(--white);
         }
 
         .guideline-text p {
-            font-size: 0.95rem;
-            opacity: 0.9;
+            font-size: 0.88rem;
+            color: var(--text-muted);
             line-height: 1.6;
         }
 
-        /* Catering Section */
+        /* ── CATERING ── */
         .catering {
-            padding: 6rem 2rem;
-            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--golden-yellow) 100%);
-            color: var(--light-text);
+            padding: 7rem 2rem;
+            background: var(--black);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .catering::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse at 30% 50%, rgba(201,168,76,0.07) 0%, transparent 60%),
+                radial-gradient(ellipse at 70% 50%, rgba(201,168,76,0.05) 0%, transparent 60%);
+            pointer-events: none;
         }
 
         .catering-container {
             max-width: 1200px;
             margin: 0 auto;
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
 
         .catering h2 {
             font-family: 'Great Vibes', cursive;
-            font-size: 3.2rem;
-            margin-bottom: 2rem;
+            font-size: 3.5rem;
+            color: var(--gold);
             font-weight: 400;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+            margin-bottom: 1rem;
+            text-shadow: 0 0 40px var(--gold-glow);
         }
 
         .catering-description {
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-            line-height: 1.8;
+            font-size: 1rem;
+            color: var(--text-muted);
+            max-width: 580px;
+            margin: 0 auto 3rem;
+            line-height: 1.9;
         }
 
         .catering-services {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
         }
 
         .service-box {
-            background: rgba(255, 255, 255, 0.1);
+            background: var(--black-card);
             padding: 2rem;
             border-radius: 12px;
-            backdrop-filter: blur(10px);
+            border: 1px solid var(--black-border);
             transition: all 0.3s ease;
-            border: 2px solid rgba(255, 255, 255, 0.2);
         }
 
         .service-box:hover {
-            background: rgba(255, 255, 255, 0.2);
+            border-color: var(--gold-dark);
+            background: var(--black-surface);
             transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
         .service-box h3 {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+            color: var(--gold);
         }
 
-        .catering .btn-primary {
-            margin-top: 2rem;
+        .service-box p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
         }
 
-        /* Order Section */
+        /* ── ORDER SECTION ── */
         .order-section {
-            padding: 6rem 2rem;
-            background: var(--soft-cream);
+            padding: 7rem 2rem;
+            background: var(--black-rich);
         }
 
         .order-container {
@@ -504,76 +645,95 @@
         }
 
         .order-section h2 {
+            font-family: 'Playfair Display', serif;
             text-align: center;
             font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--deep-green);
+            margin-bottom: 0.5rem;
+            color: var(--white);
         }
 
         .order-methods {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 2rem;
-            margin-bottom: 3rem;
+            margin: 3rem 0;
         }
 
         .order-method {
-            background: var(--light-text);
-            padding: 2.5rem;
+            background: var(--black-card);
+            padding: 2.5rem 2rem;
             border-radius: 15px;
             text-align: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--black-border);
             transition: all 0.3s ease;
-            border-top: 4px solid var(--primary-orange);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .order-method::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold), transparent);
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
 
         .order-method:hover {
             transform: translateY(-8px);
-            box-shadow: 0 10px 30px rgba(232, 118, 77, 0.25);
+            border-color: var(--gold-dark);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .order-method:hover::after {
+            opacity: 1;
         }
 
         .order-method-icon {
             font-size: 2.5rem;
-            color: var(--primary-orange);
             margin-bottom: 1rem;
         }
 
         .order-method h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--deep-green);
+            font-size: 1.3rem;
+            margin-bottom: 0.8rem;
+            color: var(--gold);
         }
 
         .order-method p {
-            color: #666;
+            color: var(--text-muted);
             margin-bottom: 1.5rem;
+            font-size: 0.9rem;
         }
 
         .order-method .btn {
             width: 100%;
         }
 
-        /* Form */
+        /* ── FORM ── */
         .order-form {
-            background: var(--light-text);
+            background: var(--black-card);
             padding: 2.5rem;
             border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--black-border);
             margin-bottom: 2rem;
         }
 
         .order-form h3 {
             text-align: center;
-            margin-bottom: 2rem;
-            color: var(--deep-green);
-            font-size: 1.5rem;
+            margin-bottom: 0.3rem;
+            color: var(--gold);
+            font-size: 1.4rem;
         }
 
         .form-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 1.5rem;
-            margin-bottom: 1.5rem;
+            margin-top: 2rem;
         }
 
         .form-group {
@@ -584,24 +744,34 @@
         .form-group label {
             margin-bottom: 0.5rem;
             font-weight: 600;
-            color: var(--deep-green);
+            color: var(--white-soft);
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
         }
 
         .form-group input,
         .form-group textarea {
-            padding: 1rem;
-            border: 2px solid #e0e0e0;
+            padding: 0.9rem 1.1rem;
+            border: 1px solid var(--black-border);
             border-radius: 8px;
             font-family: 'Poppins', sans-serif;
-            font-size: 1rem;
+            font-size: 0.95rem;
             transition: all 0.3s ease;
+            background: var(--black-surface);
+            color: var(--white);
+        }
+
+        .form-group input::placeholder,
+        .form-group textarea::placeholder {
+            color: var(--text-muted);
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
             outline: none;
-            border-color: var(--primary-orange);
-            box-shadow: 0 0 10px rgba(232, 118, 77, 0.2);
+            border-color: var(--gold-dark);
+            box-shadow: 0 0 15px var(--gold-glow);
+            background: var(--black-card);
         }
 
         .form-group textarea {
@@ -611,13 +781,15 @@
         }
 
         .form-notice {
-            background: rgba(232, 118, 77, 0.1);
-            color: var(--primary-orange);
-            padding: 1.5rem;
+            background: rgba(201,168,76,0.1);
+            color: var(--gold);
+            padding: 1rem 1.5rem;
             border-radius: 8px;
-            border-left: 4px solid var(--primary-orange);
-            margin-bottom: 1.5rem;
+            border-left: 3px solid var(--gold);
+            margin-bottom: 1rem;
             font-weight: 600;
+            font-size: 0.9rem;
+            margin-top: 1rem;
         }
 
         .form-submit {
@@ -625,12 +797,13 @@
             grid-column: 1 / -1;
         }
 
-        /* Footer */
+        /* ── FOOTER ── */
         footer {
-            background: var(--deep-green);
-            color: var(--light-text);
-            padding: 3rem 2rem;
+            background: var(--black);
+            color: var(--white);
+            padding: 4rem 2rem 2rem;
             text-align: center;
+            border-top: 1px solid var(--black-border);
         }
 
         .footer-content {
@@ -640,153 +813,120 @@
 
         footer h2 {
             font-family: 'Great Vibes', cursive;
-            font-size: 2.5rem;
-            margin-bottom: 1.5rem;
+            font-size: 2.8rem;
             font-weight: 400;
-            color: var(--golden-yellow);
+            color: var(--gold);
+            text-shadow: 0 0 30px var(--gold-glow);
+        }
+
+        .footer-slogan {
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            color: var(--text-muted);
+            letter-spacing: 2px;
+            text-transform: uppercase;
         }
 
         .social-icons {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            margin: 2rem 0;
+            gap: 1.5rem;
+            margin: 2.5rem 0;
         }
 
         .social-icons a {
-            width: 50px;
-            height: 50px;
-            background: rgba(255, 255, 255, 0.1);
+            width: 48px;
+            height: 48px;
+            background: var(--black-card);
+            border: 1px solid var(--black-border);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--golden-yellow);
+            color: var(--gold);
             transition: all 0.3s ease;
-            font-size: 1.5rem;
+            font-size: 1.2rem;
             text-decoration: none;
         }
 
         .social-icons a:hover {
-            background: var(--golden-yellow);
-            color: var(--deep-green);
+            background: var(--gold);
+            color: var(--black);
+            border-color: var(--gold);
             transform: translateY(-5px);
+            box-shadow: 0 8px 25px var(--gold-glow);
         }
 
-        .footer-slogan {
-            font-size: 1.2rem;
-            margin-top: 2rem;
-            opacity: 0.9;
-            font-style: italic;
+        .footer-divider {
+            width: 100px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--gold-dark), transparent);
+            margin: 2rem auto;
         }
 
         .footer-copyright {
-            margin-top: 1.5rem;
-            font-size: 0.95rem;
-            opacity: 0.8;
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            opacity: 0.7;
         }
 
-        /* Responsive Design */
+        /* ── RESPONSIVE ── */
         @media (max-width: 768px) {
-            .cursive-title {
-                font-size: 2.5rem;
-            }
-
-            .hero-content h1 {
-                font-size: 3.5rem;
-            }
-
-            .hero-content .tagline {
-                font-size: 1.5rem;
-            }
-
-            .section-title {
-                font-size: 2rem;
-            }
-
-            .menu-title h2 {
-                font-size: 2.2rem;
-            }
-
-            .catering h2 {
-                font-size: 2.2rem;
-            }
-
-            footer h2 {
-                font-size: 1.8rem;
-            }
-
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-
-            .btn {
-                width: 100%;
-                max-width: 300px;
-            }
-
-            .features-grid,
-            .guidelines-grid,
-            .menu-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .catering-services {
-                grid-template-columns: 1fr;
-            }
+            .hero-content h1 { font-size: 5.5rem; }
+            .hero-content .tagline { font-size: 1.3rem; }
+            .section-title { font-size: 2rem; }
+            .catering h2 { font-size: 2.5rem; }
+            footer h2 { font-size: 2.2rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .btn { width: 100%; max-width: 300px; text-align: center; }
+            .features-grid, .guidelines-grid, .menu-grid { grid-template-columns: 1fr; }
+            .catering-services { grid-template-columns: 1fr 1fr; }
+            .order-methods { grid-template-columns: 1fr; }
         }
 
-        /* Utility */
-        .section-animation {
-            animation: slideUp 0.6s ease-out;
+        @media (max-width: 480px) {
+            .catering-services { grid-template-columns: 1fr; }
         }
-
-        /* ── SPLASH SCREEN ── */
-        #splash { position: fixed; inset: 0; background: #0A0A0A; z-index: 99999; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.8s ease, visibility 0.8s ease; }
-        #splash.hidden { opacity: 0; visibility: hidden; pointer-events: none; }
-        .splash-welcome { font-family: 'Poppins', sans-serif; font-size: 0.9rem; letter-spacing: 6px; text-transform: uppercase; color: #C9A84C; margin-bottom: 0.5rem; opacity: 0; animation: splashFadeIn 0.6s ease forwards 0.3s; }
-        .splash-title { font-family: 'Great Vibes', cursive; font-size: 6rem; color: #fff; font-weight: 400; text-shadow: 0 0 40px rgba(201,168,76,0.8); opacity: 0; animation: splashFadeIn 0.8s ease forwards 0.7s; line-height: 1.1; }
-        .splash-subtitle { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: #999; font-style: italic; margin-top: 0.5rem; letter-spacing: 2px; opacity: 0; animation: splashFadeIn 0.8s ease forwards 1.1s; }
-        .splash-divider { width: 0px; height: 1px; background: linear-gradient(90deg, transparent, #C9A84C, transparent); margin: 1.5rem auto; animation: splashExpand 1s ease forwards 1.3s; }
-        .splash-loader { display: flex; gap: 8px; margin-top: 2.5rem; opacity: 0; animation: splashFadeIn 0.5s ease forwards 1.5s; }
-        .splash-loader span { width: 8px; height: 8px; background: #C9A84C; border-radius: 50%; animation: splashDot 1.2s ease-in-out infinite; }
-        .splash-loader span:nth-child(2) { animation-delay: 0.2s; }
-        .splash-loader span:nth-child(3) { animation-delay: 0.4s; }
-        @keyframes splashFadeIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
-        @keyframes splashExpand { from { width: 0px; opacity: 0; } to { width: 120px; opacity: 1; } }
-        @keyframes splashDot { 0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; } 40% { transform: scale(1.2); opacity: 1; } }
-        @media (max-width: 768px) { .splash-title { font-size: 4rem; } }
     </style>
 </head>
 <body>
 
-    <!-- SPLASH SCREEN -->
-    <div id="splash">
-        <p class="splash-welcome">Welcome to</p>
-        <h1 class="splash-title">Kiat's</h1>
-        <div class="splash-divider"></div>
-        <p class="splash-subtitle">Taste That Lingers Forever</p>
-        <div class="splash-loader"><span></span><span></span><span></span></div>
-    </div>
+    <!-- NAVBAR -->
+    <nav>
+        <a href="#home" class="nav-logo">Eat With Kiat</a>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle menu">
+            <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#menu">Menu</a></li>
+            <li><a href="#catering">Catering</a></li>
+            <li><a href="#order" class="nav-cta">Order Now</a></li>
+        </ul>
+    </nav>
 
-    <!-- HERO SECTION -->
+    <!-- HERO -->
     <section class="hero" id="home">
+        <canvas id="bgfw" style="position:absolute;top:0;left:0;pointer-events:none;z-index:0;"></canvas>
+
         <div class="hero-content">
+            <div class="hero-badge">Premium Food Delivery & Catering</div>
             <h1>Eat With Kiat</h1>
             <p class="tagline">Taste That Lingers Forever</p>
-            <p class="subtitle">Premium Food Delivery & Event Catering</p>
+            <p class="subtitle">Crafted with passion · Delivered with care</p>
             <div class="hero-buttons">
-                <button class="btn btn-primary" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">View Menu</button>
-                <button class="btn btn-secondary" onclick="document.getElementById('order').scrollIntoView({behavior: 'smooth'})">Order Now</button>
+                <button class="btn btn-primary" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">View Menu</button>
+                <button class="btn btn-secondary" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Order Now</button>
             </div>
         </div>
     </section>
 
-    <!-- FEATURES SECTION -->
+    <!-- FEATURES -->
     <section class="features">
         <div class="features-container">
-            <h2>Why Choose Us</h2>
+            <p class="section-label">Why Choose Us</p>
+            <h2 class="section-title">Excellence on Every Plate</h2>
+            <div class="gold-divider"></div>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">🚚</div>
@@ -807,173 +947,132 @@
         </div>
     </section>
 
-    <!-- MENU SECTION -->
+    <!-- MENU -->
     <section class="menu" id="menu">
         <div class="menu-container">
-            <div class="menu-title">
-                <h2>Our Menu</h2>
-            </div>
+            <p class="section-label">Our Offerings</p>
+            <h2 class="section-title" style="font-family:'Great Vibes',cursive; font-weight:400; font-size:3rem; color:var(--gold);">Our Menu</h2>
+            <div class="gold-divider"></div>
             <div class="menu-categories">
-                <button class="category-btn active" onclick="filterMenu('all')">All Items</button>
-                <button class="category-btn" onclick="filterMenu('rice')">Rice Dishes</button>
-                <button class="category-btn" onclick="filterMenu('special')">Special Dishes</button>
-                <button class="category-btn" onclick="filterMenu('fastfood')">Fast Food</button>
-                <button class="category-btn" onclick="filterMenu('local')">Local Dishes</button>
-                <button class="category-btn" onclick="filterMenu('pasta')">Pasta</button>
-                <button class="category-btn" onclick="filterMenu('drinks')">Drinks</button>
+                <button class="category-btn active" data-category="all">All Items</button>
+                <button class="category-btn" data-category="rice">Rice Dishes</button>
+                <button class="category-btn" data-category="special">Special Dishes</button>
+                <button class="category-btn" data-category="fastfood">Fast Food</button>
+                <button class="category-btn" data-category="local">Local Dishes</button>
+                <button class="category-btn" data-category="pasta">Pasta</button>
+                <button class="category-btn" data-category="drinks">Drinks</button>
+                <button class="category-btn" data-category="bulk">Bulk Orders</button>
             </div>
-            <div class="menu-grid" id="menuGrid">
-                <!-- Menu items will be generated by JavaScript -->
-            </div>
+            <div class="menu-grid" id="menuGrid"></div>
         </div>
     </section>
 
-    <!-- GUIDELINES SECTION -->
+    <!-- GUIDELINES -->
     <section class="guidelines">
         <div class="guidelines-container">
-            <h2>Customer Order Guidelines</h2>
-            <p class="guidelines-subtitle">Please Read Before Ordering</p>
+            <p class="section-label">Before You Order</p>
+            <h2 class="section-title">Customer Order Guidelines</h2>
+            <div class="gold-divider"></div>
+            <p class="guidelines-subtitle">Please read carefully before placing your order</p>
             <div class="guidelines-grid">
                 <div class="guideline-item">
-                    <div class="guideline-icon">✓</div>
-                    <div class="guideline-text">
-                        <h3>State Allergies</h3>
-                        <p>Inform us of any allergies before ordering to ensure your safety.</p>
-                    </div>
+                    <div class="guideline-icon">✦</div>
+                    <div class="guideline-text"><h3>State Allergies</h3><p>Inform us of any allergies before ordering to ensure your safety.</p></div>
                 </div>
                 <div class="guideline-item">
-                    <div class="guideline-icon">✓</div>
-                    <div class="guideline-text">
-                        <h3>No Cancellations</h3>
-                        <p>No cancellations allowed after order confirmation.</p>
-                    </div>
+                    <div class="guideline-icon">✦</div>
+                    <div class="guideline-text"><h3>No Cancellations</h3><p>No cancellations allowed after order confirmation.</p></div>
                 </div>
                 <div class="guideline-item">
-                    <div class="guideline-icon">✓</div>
-                    <div class="guideline-text">
-                        <h3>Stay Reachable</h3>
-                        <p>Ensure your phone number is active and reachable during order processing.</p>
-                    </div>
+                    <div class="guideline-icon">✦</div>
+                    <div class="guideline-text"><h3>Stay Reachable</h3><p>Ensure your phone number is active and reachable during order processing.</p></div>
                 </div>
                 <div class="guideline-item">
-                    <div class="guideline-icon">✓</div>
-                    <div class="guideline-text">
-                        <h3>Dispatch Timeline</h3>
-                        <p>Orders are dispatched within 7-8 hours of confirmation.</p>
-                    </div>
+                    <div class="guideline-icon">✦</div>
+                    <div class="guideline-text"><h3>Dispatch Timeline</h3><p>Orders are dispatched within 7-8 hours of confirmation.</p></div>
                 </div>
                 <div class="guideline-item">
-                    <div class="guideline-icon">✓</div>
-                    <div class="guideline-text">
-                        <h3>Correct Address</h3>
-                        <p>Provide accurate delivery address to avoid delays.</p>
-                    </div>
+                    <div class="guideline-icon">✦</div>
+                    <div class="guideline-text"><h3>Correct Address</h3><p>Provide accurate delivery address to avoid delays.</p></div>
                 </div>
                 <div class="guideline-item">
-                    <div class="guideline-icon">✓</div>
-                    <div class="guideline-text">
-                        <h3>Check Order</h3>
-                        <p>Inspect your order upon delivery for accuracy.</p>
-                    </div>
+                    <div class="guideline-icon">✦</div>
+                    <div class="guideline-text"><h3>Check Your Order</h3><p>Inspect your order upon delivery for accuracy.</p></div>
                 </div>
                 <div class="guideline-item">
-                    <div class="guideline-icon">✓</div>
-                    <div class="guideline-text">
-                        <h3>Leave a Review</h3>
-                        <p>Share your experience with us through reviews.</p>
-                    </div>
+                    <div class="guideline-icon">✦</div>
+                    <div class="guideline-text"><h3>Leave a Review</h3><p>Share your experience with us through reviews.</p></div>
                 </div>
                 <div class="guideline-item">
-                    <div class="guideline-icon">✓</div>
-                    <div class="guideline-text">
-                        <h3>Contact First</h3>
-                        <p>Contact us directly if any issues arise with your order.</p>
-                    </div>
+                    <div class="guideline-icon">✦</div>
+                    <div class="guideline-text"><h3>Contact First</h3><p>Contact us directly if any issues arise with your order.</p></div>
                 </div>
                 <div class="guideline-item">
-                    <div class="guideline-icon">✓</div>
-                    <div class="guideline-text">
-                        <h3>No Public Complaints</h3>
-                        <p>Avoid public complaints; reach out to us directly instead.</p>
-                    </div>
+                    <div class="guideline-icon">✦</div>
+                    <div class="guideline-text"><h3>No Public Complaints</h3><p>Avoid public complaints; reach out to us directly instead.</p></div>
                 </div>
                 <div class="guideline-item">
-                    <div class="guideline-icon">✓</div>
-                    <div class="guideline-text">
-                        <h3>Agreement</h3>
-                        <p>Ordering means you agree with all our terms and conditions.</p>
-                    </div>
+                    <div class="guideline-icon">✦</div>
+                    <div class="guideline-text"><h3>Agreement</h3><p>Ordering means you agree with all our terms and conditions.</p></div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- CATERING SECTION -->
-    <section class="catering">
+    <!-- CATERING -->
+    <section class="catering" id="catering">
         <div class="catering-container">
+            <p class="section-label">Events & Functions</p>
             <h2>Party & Event Catering</h2>
-            <p class="catering-description">
-                Let us make your special occasions memorable with our premium catering services. From intimate gatherings to grand celebrations, we deliver excellence on every plate.
-            </p>
+            <div class="gold-divider"></div>
+            <p class="catering-description">Let us make your special occasions memorable with our premium catering services. From intimate gatherings to grand celebrations, we deliver excellence on every plate.</p>
             <div class="catering-services">
-                <div class="service-box">
-                    <h3>💍 Weddings</h3>
-                    <p>Elegant dishes for your perfect wedding celebration.</p>
-                </div>
-                <div class="service-box">
-                    <h3>🎂 Birthdays</h3>
-                    <p>Delicious food for memorable birthday parties.</p>
-                </div>
-                <div class="service-box">
-                    <h3>🏢 Corporate Events</h3>
-                    <p>Professional catering for your business gatherings.</p>
-                </div>
-                <div class="service-box">
-                    <h3>🎉 Private Parties</h3>
-                    <p>Custom menus for your private celebrations.</p>
-                </div>
+                <div class="service-box"><h3>💍 Weddings</h3><p>Elegant dishes for your perfect wedding celebration.</p></div>
+                <div class="service-box"><h3>🎂 Birthdays</h3><p>Delicious food for memorable birthday parties.</p></div>
+                <div class="service-box"><h3>🏢 Corporate Events</h3><p>Professional catering for your business gatherings.</p></div>
+                <div class="service-box"><h3>🎉 Private Parties</h3><p>Custom menus for your private celebrations.</p></div>
             </div>
-            <button class="btn btn-primary" onclick="document.getElementById('order').scrollIntoView({behavior: 'smooth'})">Request Catering Quote</button>
+            <button class="btn btn-primary" onclick="document.getElementById('order').scrollIntoView({behavior:'smooth'})">Request Catering Quote</button>
         </div>
     </section>
 
     <!-- ORDER SECTION -->
     <section class="order-section" id="order">
         <div class="order-container">
+            <p class="section-label">Get In Touch</p>
             <h2>Place Your Order</h2>
+            <div class="gold-divider"></div>
             <div class="order-methods">
                 <div class="order-method">
                     <div class="order-method-icon">💬</div>
                     <h3>WhatsApp</h3>
                     <p>Quick and convenient ordering via WhatsApp with instant responses.</p>
-                    <a href="https://wa.me/1234567890" class="btn btn-primary" target="_blank">Order via WhatsApp</a>
+                    <a href="https://wa.me/2349115416393" class="btn btn-primary" target="_blank">Chat on WhatsApp</a>
                 </div>
                 <div class="order-method">
                     <div class="order-method-icon">📞</div>
                     <h3>Call Now</h3>
                     <p>Speak directly with our team for personalized assistance.</p>
-                    <a href="tel:+1234567890" class="btn btn-primary">Call Now</a>
+                    <a href="tel:+2349115416393" class="btn btn-primary">Call 09115416393</a>
                 </div>
             </div>
 
             <div class="order-form">
                 <h3>📋 Order Form</h3>
-                <div class="form-notice">
-                    ⚠️ Delivery Only – No Dine-In Service
-                </div>
-                <form>
+                <div class="form-notice">⚠️ Delivery Only – No Dine-In Service</div>
+                <form id="orderForm" action="https://formspree.io/f/xykndyne" method="POST">
                     <div class="form-grid">
                         <div class="form-group">
                             <label for="name">Full Name *</label>
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="name" placeholder="Your full name" required>
                         </div>
                         <div class="form-group">
                             <label for="phone">Phone Number *</label>
-                            <input type="tel" id="phone" name="phone" required>
+                            <input type="tel" id="phone" name="phone" placeholder="Your phone number" required>
                         </div>
                         <div class="form-group">
                             <label for="address">Delivery Address *</label>
-                            <input type="text" id="address" name="address" required>
+                            <input type="text" id="address" name="address" placeholder="Your delivery address" required>
                         </div>
                         <div class="form-group">
                             <label for="details">Order Details *</label>
@@ -990,110 +1089,214 @@
     <footer>
         <div class="footer-content">
             <h2>Eat With Kiat</h2>
-            <p class="footer-slogan">Delicious Food • Great Service • Happy Customers</p>
+            <p class="footer-slogan">Delicious Food · Great Service · Happy Customers</p>
             <div class="social-icons">
-                <a href="https://instagram.com" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
-                <a href="https://tiktok.com" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
-                <a href="https://wa.me/1234567890" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://instagram.com/Eat_with_kiat" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@eat_with_kiat14" target="_blank" title="TikTok"><i class="fab fa-tiktok"></i></a>
+                <a href="https://wa.me/2349115416393" target="_blank" title="WhatsApp"><i class="fab fa-whatsapp"></i></a>
             </div>
+            <div class="footer-divider"></div>
             <p class="footer-copyright">Eat With Kiat © 2026. All rights reserved. Premium Food Delivery & Catering Services.</p>
         </div>
     </footer>
 
     <script>
-        // Menu Items Data
+        // ── NAVBAR TOGGLE ──
+        const navToggle = document.getElementById('navToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        navToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('open');
+        });
+
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('open');
+            });
+        });
+
+        // ── MENU DATA ──
         const menuItems = [
-            // Rice Dishes
-            { name: 'Jollof Rice', category: 'rice', description: 'Aromatic rice cooked in tomato sauce', icon: '🍚', price: '₦2,500' },
-            { name: 'Coconut Rice', category: 'rice', description: 'Creamy coconut-infused rice', icon: '🥥', price: '₦2,800' },
-            { name: 'Ofada Rice', category: 'rice', description: 'Traditional parboiled rice delight', icon: '🍚', price: '₦2,600' },
-            { name: 'White Rice', category: 'rice', description: 'Fluffy white rice with toppings', icon: '🍚', price: '₦1,800' },
-            { name: 'Fried Rice', category: 'rice', description: 'Classic fried rice with mixed vegetables', icon: '🍚', price: '₦2,400' },
-
-            // Special Dishes
-            { name: 'Plantain Pizza', category: 'special', description: 'Crispy plantain with special toppings', icon: '🍕', price: '₦3,200' },
-            { name: 'Sauce Rice', category: 'special', description: 'Rice with savory meat sauce', icon: '🍽️', price: '₦3,000' },
-            { name: 'Special Toast Bread', category: 'special', description: 'Toasted bread with premium spreads', icon: '🍞', price: '₦2,200' },
-
-            // Fast Food
-            { name: 'Chicken & Chips', category: 'fastfood', description: 'Crispy fried chicken with fries', icon: '🍗', price: '₦2,800' },
-            { name: 'Shawarma', category: 'fastfood', description: 'Grilled meat wrapped in bread', icon: '🌯', price: '₦2,500' },
-            { name: 'Gizdodo', category: 'fastfood', description: 'Fried gizzard and plantain combo', icon: '🍖', price: '₦3,000' },
-
-            // Local Dishes
-            { name: 'Cassava Fufu & Peppered Snail', category: 'local', description: 'Traditional fufu with spicy snails', icon: '🍲', price: '₦4,500' },
-            { name: 'Cocoyam Porridge', category: 'local', description: 'Creamy cocoyam soup', icon: '🍲', price: '₦3,500' },
-            { name: 'Bush Meat & Smoked Yam', category: 'local', description: 'Premium bushmeat with smoked yam', icon: '🍖', price: '₦5,000' },
-
-            // Pasta
-            { name: 'Creamy Pasta with Chicken', category: 'pasta', description: 'Silky pasta with succulent chicken', icon: '🍝', price: '₦3,200' },
-            { name: 'Reggia', category: 'pasta', description: 'Spicy pasta with mixed protein', icon: '🍝', price: '₦3,500' },
-            { name: 'Singapore Noodles', category: 'pasta', description: 'Aromatic noodles with Asian flavors', icon: '🍜', price: '₦3,000' },
-            { name: 'Stir Fried Pasta', category: 'pasta', description: 'Wok-tossed pasta with vegetables', icon: '🍝', price: '₦2,800' },
-
-            // Drinks
-            { name: 'Chapman', category: 'drinks', description: 'Refreshing citrus cocktail', icon: '🥤', price: '₦1,500' },
-            { name: 'Schweppes', category: 'drinks', description: 'Chilled carbonated beverage', icon: '🥃', price: '₦1,000' },
-            { name: 'Mojito Lime', category: 'drinks', description: 'Fresh lime mojito', icon: '🍋', price: '₦2,000' },
-            { name: 'Carrot Kick', category: 'drinks', description: 'Fresh carrot juice blend', icon: '🥕', price: '₦1,800' },
-            { name: 'Heaven', category: 'drinks', description: 'Tropical fruit smoothie', icon: '🍓', price: '₦2,200' },
+            { name: 'Jollof Rice',                    category: 'rice',     description: 'Aromatic rice cooked in tomato sauce',                                                                      price: '₦4,000',           img: 'jollof_rice.jpeg.jpeg' },
+            { name: 'Coconut Rice',                   category: 'rice',     description: 'Creamy coconut-infused rice',                                                                                price: '₦5,000',           img: 'coconut_rice_.jpeg.jpeg' },
+            { name: 'Fried Rice',                     category: 'rice',     description: 'Classic fried rice with mixed vegetables',                                                                   price: '₦5,000',           img: 'fried_rice_.jpeg.jpeg' },
+            { name: 'Ofada Rice',                     category: 'rice',     description: 'Traditional parboiled rice delight',                                                                         price: '₦6,000',           img: 'ofada_rice_.jpeg.jpeg' },
+            { name: 'Asun Rice',                      category: 'rice',     description: 'Flavourful rice served with spicy asun',                                                                     price: '₦6,000',           img: 'asun_rice_.jpeg.jpeg' },
+            { name: 'White Rice',                     category: 'rice',     description: 'Fluffy white rice with toppings',                                                                            price: '₦1,800',           img: '' },
+            { name: 'Plantain Pizza',                 category: 'special',  description: 'Crispy plantain with special toppings',                                                                      price: '₦3,200',           img: 'plantain_pizza_.jpeg.jpeg' },
+            { name: 'Sauce Rice',                     category: 'special',  description: 'Rice with savory meat sauce and beef',                                                                       price: '₦5,000',           img: 'sauce_rice_.jpeg.jpeg' },
+            { name: 'Special Toast Bread',            category: 'special',  description: 'Toasted bread with premium spreads',                                                                         price: '₦2,200',           img: 'toast_bread_.jpeg.jpeg' },
+            { name: 'Coleslaw',                       category: 'special',  description: 'Fresh creamy coleslaw salad',                                                                               price: 'Ask us',           img: 'coleslaw.jpeg.jpeg' },
+            { name: 'Dodo (Fried Plantain)',          category: 'special',  description: 'Sweet golden fried plantain',                                                                               price: 'Ask us',           img: 'dodo.jpeg.jpeg' },
+            { name: 'Corn Dog',                       category: 'fastfood', description: 'Golden crispy corn dog',                                                                                    price: '₦4,000',           img: 'corndog.jpeg.jpeg' },
+            { name: 'Chicken & Chips',                category: 'fastfood', description: 'Crispy fried chicken with fries',                                                                           price: '₦5,000',           img: 'chicken_and_chips_.jpeg.jpeg' },
+            { name: 'Shawarma',                       category: 'fastfood', description: 'Grilled meat wrapped in bread',                                                                             price: '₦4,000',           img: 'sharwarmas.jpeg.jpeg' },
+            { name: 'Gizdodo',                        category: 'fastfood', description: 'Fried gizzard and plantain combo',                                                                          price: '₦5,000',           img: 'gizzdodo.jpeg.jpeg' },
+            { name: 'Cassava Flakes & Peppered Snail',category: 'fastfood', description: 'Cassava flakes with spicy snails',                                                                          price: '₦10,000',          img: 'peppered_snail.jpeg.jpeg' },
+            { name: 'Peppered Meat',                  category: 'fastfood', description: 'Spicy peppered assorted meat',                                                                              price: 'Ask us',           img: 'peppered_meat_.jpeg.jpeg' },
+            { name: 'Peppered Turkey',                category: 'fastfood', description: 'Juicy turkey in rich pepper sauce',                                                                         price: 'Ask us',           img: 'peppered_turkey_.jpeg.jpeg' },
+            { name: 'Eggs',                           category: 'fastfood', description: 'Perfectly cooked eggs your way',                                                                            price: 'Ask us',           img: 'eggs.jpeg.jpeg' },
+            { name: 'Cocoyam Porridge',               category: 'local',    description: 'Creamy cocoyam soup',                                                                                       price: '₦5,000',           img: '' },
+            { name: 'Bush Meat & Smoked Yam',         category: 'local',    description: 'Premium bushmeat with smoked yam',                                                                          price: '₦15,000 – ₦45,000', img: 'bush_meat_.jpeg.jpeg' },
+            { name: 'Ayamashe Sauce & Ofada Rice',    category: 'local',    description: 'Rich ayamashe sauce with ofada rice — with turkey ₦35,000 | without turkey ₦30,000',                       price: '₦30,000 – ₦35,000', img: 'ofada_rice_.jpeg.jpeg' },
+            { name: 'Vegetable Soup & Swallow',       category: 'local',    description: 'Vegetable soup paired with any swallow of your choice',                                                     price: '₦25,000',          img: 'bulk_vegetable_soup_.jpeg.jpeg' },
+            { name: 'Beef & Assorted Egg Soup',       category: 'local',    description: 'Hearty soup with beef and assorted egg — pairs with rice, swallow, or yam',                                price: '₦25,000',          img: '' },
+            { name: 'Jollof Rice Bulk Pack',          category: 'bulk',     description: 'Large party pack of jollof rice with 4 turkey pieces',                                                      price: '₦30,000',          img: 'jollof_rice.jpeg.jpeg' },
+            { name: 'Fried Rice Bulk Pack',           category: 'bulk',     description: 'Large party pack of fried rice with 4 turkey pieces',                                                       price: '₦30,000',          img: 'bulk_friedrice_.jpeg.jpeg' },
+            { name: 'Creamy Pasta with Chicken',      category: 'pasta',    description: 'Silky pasta with succulent chicken',                                                                         price: '₦5,000',           img: 'creamy_pasta_.jpeg.jpeg' },
+            { name: 'Reggia (Fusilli Pasta)',          category: 'pasta',    description: 'Spicy fusilli pasta with mixed protein',                                                                    price: '₦3,500',           img: 'reggia_pasta_.jpeg.jpeg' },
+            { name: 'Singapore Noodles',              category: 'pasta',    description: 'Aromatic noodles with Asian flavors',                                                                        price: '₦7,000',           img: 'singapore_noodles_.jpeg.jpeg' },
+            { name: 'Stir Fried Pasta',               category: 'pasta',    description: 'Wok-tossed pasta with turkey',                                                                              price: '₦11,000',          img: 'stir_fry_pasta_.jpeg.jpeg' },
+            { name: 'Chapman',                        category: 'drinks',   description: 'Refreshing citrus cocktail',                                                                                price: '₦1,500',           img: 'schwepps_.jpeg.jpeg' },
+            { name: 'Imperial Crown',                 category: 'drinks',   description: 'Premium chilled beverage',                                                                                  price: '₦1,200',           img: 'imperial_rown.jpeg.jpeg' },
+            { name: 'Schweppes',                      category: 'drinks',   description: 'Chilled carbonated beverage',                                                                               price: '₦1,000',           img: '' },
+            { name: 'Mojito Lime',                    category: 'drinks',   description: 'Fresh lime mojito',                                                                                         price: '₦2,000',           img: '' },
+            { name: 'Carrot Kick',                    category: 'drinks',   description: 'Fresh carrot juice blend',                                                                                  price: '₦1,800',           img: 'carrot_kick_.jpeg.jpeg' },
+            { name: 'Heaven',                         category: 'drinks',   description: 'Tropical fruit smoothie',                                                                                   price: '₦2,200',           img: 'heaven_drink.jpeg.jpeg' },
         ];
 
-        // Render Menu Items
-        function renderMenu(itemsToRender) {
-            const menuGrid = document.getElementById('menuGrid');
-            menuGrid.innerHTML = '';
-            itemsToRender.forEach((item, index) => {
-                const menuCard = document.createElement('div');
-                menuCard.className = 'menu-card';
-                menuCard.style.animationDelay = `${index * 0.05}s`;
-                menuCard.innerHTML = `
-                    <div class="menu-card-image">${item.icon}</div>
+        // ── RENDER MENU ──
+        function renderMenu(items) {
+            const grid = document.getElementById('menuGrid');
+            grid.innerHTML = '';
+            items.forEach(item => {
+                const card = document.createElement('div');
+                card.className = 'menu-card';
+                const imgHtml = item.img
+                    ? `<img src="${item.img}" alt="${item.name}" style="width:100%;height:100%;object-fit:cover;">`
+                    : '✦';
+                card.innerHTML = `
+                    <div class="menu-card-image">${imgHtml}</div>
                     <div class="menu-card-content">
                         <h3>${item.name}</h3>
                         <p>${item.description}</p>
                         <div class="menu-price">${item.price}</div>
                     </div>
                 `;
-                menuGrid.appendChild(menuCard);
+                grid.appendChild(card);
             });
         }
 
-        // Filter Menu
-        function filterMenu(category) {
-            // Update active button
-            document.querySelectorAll('.category-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-
-            // Filter items
-            if (category === 'all') {
-                renderMenu(menuItems);
-            } else {
-                const filtered = menuItems.filter(item => item.category === category);
-                renderMenu(filtered);
-            }
-        }
+        // ── FILTER MENU ──
+        document.querySelectorAll('.category-btn').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                const cat = this.dataset.category;
+                renderMenu(cat === 'all' ? menuItems : menuItems.filter(i => i.category === cat));
+            });
+        });
 
         // Initial render
         renderMenu(menuItems);
 
-        // Smooth scrolling and animations
+        // ── SMOOTH SCROLL ──
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
                 const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth' });
-                }
+                if (target) target.scrollIntoView({ behavior: 'smooth' });
             });
         });
 
-        // Form submission
-        document.querySelector('form').addEventListener('submit', function(e) {
-            e.preventDefault();
-            alert('Thank you for your order! We will contact you shortly via WhatsApp or Call.');
-            this.reset();
-        });
+        // ── FULL PAGE FIREWORKS BACKGROUND ──
+        (function startFireworks(){
+            var canvas = document.getElementById('bgfw');
+            if(!canvas) return;
+            var ctx = canvas.getContext('2d');
+            var hero = canvas.parentElement;
+            var W = canvas.width = hero.offsetWidth;
+            var H = canvas.height = hero.offsetHeight;
+
+            window.addEventListener('resize', function(){
+                W = canvas.width = hero.offsetWidth;
+                H = canvas.height = hero.offsetHeight;
+            });
+
+            var COLORS = ['#C9A84C','#E8C97A','#FFD700','#FFF5C0','#ffffff','#9A7A2E'];
+            var particles = [];
+            var rockets = [];
+
+            function Rocket(){
+                this.x = W * (0.05 + Math.random()*0.9);
+                this.y = H + 5;
+                this.destY = H * (0.05 + Math.random()*0.55);
+                this.vy = -(Math.random()*7+8);
+                this.color = COLORS[Math.floor(Math.random()*COLORS.length)];
+            }
+
+            function Spark(x, y, color){
+                var a = Math.random()*Math.PI*2;
+                var s = Math.random()*8+2;
+                this.x=x; this.y=y;
+                this.vx=Math.cos(a)*s;
+                this.vy=Math.sin(a)*s;
+                this.alpha=1;
+                this.color=color;
+                this.r=Math.random()*4+1;
+            }
+
+            function explode(x, y, color){
+                for(var i=0; i<150; i++) particles.push(new Spark(x, y, color));
+            }
+
+            var lastTime=0, launchTimer=0;
+
+            function loop(t){
+                requestAnimationFrame(loop);
+                var dt = Math.min(t - lastTime, 50);
+                lastTime = t;
+                launchTimer += dt;
+
+                ctx.clearRect(0, 0, W, H);
+
+                if(launchTimer > 500){
+                    rockets.push(new Rocket());
+                    rockets.push(new Rocket());
+                    if(Math.random() > 0.3) rockets.push(new Rocket());
+                    launchTimer = 0;
+                }
+
+                for(var i=rockets.length-1; i>=0; i--){
+                    var r = rockets[i];
+                    r.y += r.vy;
+                    ctx.globalAlpha = 0.9;
+                    ctx.fillStyle = '#fff';
+                    ctx.beginPath();
+                    ctx.arc(r.x, r.y, 4, 0, Math.PI*2);
+                    ctx.fill();
+                    ctx.globalAlpha = 0.5;
+                    ctx.strokeStyle = r.color;
+                    ctx.lineWidth = 1.5;
+                    ctx.beginPath();
+                    ctx.moveTo(r.x, r.y);
+                    ctx.lineTo(r.x, r.y - 22);
+                    ctx.stroke();
+                    if(r.y <= r.destY){
+                        explode(r.x, r.y, r.color);
+                        rockets.splice(i, 1);
+                    }
+                }
+
+                for(var i=particles.length-1; i>=0; i--){
+                    var p = particles[i];
+                    p.x += p.vx;
+                    p.y += p.vy;
+                    p.vy += 0.06;
+                    p.vx *= 0.97;
+                    p.alpha -= 0.011;
+                    if(p.alpha <= 0){ particles.splice(i, 1); continue; }
+                    ctx.globalAlpha = p.alpha * 0.8;
+                    ctx.fillStyle = p.color;
+                    ctx.beginPath();
+                    ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+                    ctx.fill();
+                }
+                ctx.globalAlpha = 1;
+            }
+
+            requestAnimationFrame(loop);
+        })();
     </script>
 </body>
 </html>
